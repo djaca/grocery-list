@@ -1,9 +1,13 @@
 # grocery-list
 
+Just a simple personal app for grocery list...
+
 ## Project setup
 ```
 yarn install
+cp .env.example .env
 ```
+Then, in .env add firestore credentials.
 
 ### Compiles and hot-reloads for development
 ```
@@ -14,16 +18,3 @@ yarn run serve
 ```
 yarn run build
 ```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
