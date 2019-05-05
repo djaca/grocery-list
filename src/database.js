@@ -10,4 +10,9 @@ firebase.initializeApp({
   messagingSenderId: process.env.VUE_APP_FIREBASE_SENDER_ID
 })
 
-export default firebase.firestore()
+const db = firebase.firestore()
+
+const groceries = db.collection('groceries')
+const lists = db.collection('lists')
+
+export { groceries, lists }

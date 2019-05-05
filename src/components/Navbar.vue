@@ -18,6 +18,7 @@
         flat
         icon
         small
+        @click="$emit('lists')"
       >
         <v-icon>list</v-icon>
       </v-btn>
@@ -30,6 +31,7 @@
           icon
           small
           color="success"
+          @click="save"
         >
           <v-icon>check</v-icon>
         </v-btn>
@@ -49,7 +51,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapMutations, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Navbar',
@@ -59,6 +61,8 @@ export default {
   },
 
   methods: {
+    ...mapActions('lists', ['save']),
+
     ...mapMutations('groceries', ['unselect'])
   }
 }

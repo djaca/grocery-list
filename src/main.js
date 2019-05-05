@@ -3,11 +3,12 @@ import './plugins/vuetify'
 import App from './App.vue'
 import store from './store'
 import './registerServiceWorker'
-import groceries from './database/groceries'
+import { groceries, lists } from './database'
 
 Vue.config.productionTip = false
 
 store.dispatch('groceries/setItemsRef', groceries)
+store.dispatch('lists/setItemsRef', lists)
 
 new Vue({
   store,

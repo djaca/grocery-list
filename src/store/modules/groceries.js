@@ -23,6 +23,14 @@ const mutations = {
       : state.selected.splice(state.selected.findIndex(s => s.name === name), 1)
   },
 
+  setSelected (state, payload) {
+    payload.forEach(p => {
+      if (state.items.some(i => i.name === p.name)) {
+        state.selected.push(p)
+      }
+    })
+  },
+
   setQuantity (state, payload) {
     let item = state.items.find(i => i.name === payload.name)
 
@@ -53,6 +61,10 @@ const actions = {
 
   delete ({ commit }, id) {
     groceries.doc(id).delete()
+  },
+
+  setSelected ({ commit, rootState }, id) {
+    commit('setSelected', rootState.lists.items.find(i => i.id === id).items)
   }
 }
 
