@@ -1,5 +1,7 @@
 import { firestoreAction } from 'vuexfire'
 
+let groceries = null
+
 const state = {
   items: [],
   selected: []
@@ -36,8 +38,22 @@ const mutations = {
 
 const actions = {
   setItemsRef: firestoreAction(({ bindFirestoreRef }, ref) => {
+    groceries = ref
+
     bindFirestoreRef('items', ref)
-  })
+  }),
+
+  add ({ commit }, payload) {
+    groceries.add(payload)
+  },
+
+  update ({ commit }, { id, ...data }) {
+    groceries.doc(id).update(data)
+  },
+
+  delete ({ commit }, id) {
+    groceries.doc(id).delete()
+  }
 }
 
 export default {

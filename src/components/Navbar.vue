@@ -9,6 +9,7 @@
         flat
         icon
         small
+        @click="$emit('settings')"
       >
         <v-icon>settings</v-icon>
       </v-btn>

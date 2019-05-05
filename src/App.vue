@@ -1,10 +1,21 @@
 <template>
   <v-app>
-    <navbar />
+    <navbar
+      @settings="openSettingsModal"
+    />
 
-    <v-content>
-      <groceries/>
-    </v-content>
+    <groceries/>
+
+    <v-dialog
+      v-model="settingsDialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <settings
+        @close="settingsDialog = false"
+      />
+    </v-dialog>
   </v-app>
 </template>
 
@@ -14,9 +25,23 @@ import Groceries from './components/Groceries'
 
 export default {
   name: 'App',
+
   components: {
     Navbar,
-    Groceries
+    Groceries,
+    Settings: () => import('./components/dialogs/Settings')
+  },
+
+  data () {
+    return {
+      settingsDialog: false
+    }
+  },
+
+  methods: {
+    openSettingsModal () {
+      this.settingsDialog = true
+    }
   }
 }
 </script>
